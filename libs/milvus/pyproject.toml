@@ -28,6 +28,7 @@ ignore_missing_imports = "True"
 python = ">=3.9,<4.0"
 pymilvus = "^2.5.0"
 langchain-core = ">=0.2.38,<0.4"
+scipy = ">=1.15.0"
 
 [tool.coverage.run]
 omit = ["tests/*"]
