@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Any, Dict, List
+from scipy.sparse import csr_matrix
 
 
 class BaseSparseEmbedding(ABC):
