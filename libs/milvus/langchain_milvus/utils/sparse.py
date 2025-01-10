@@ -45,6 +45,8 @@ class BM25SparseEmbedding(BaseSparseEmbedding):
         return [self._sparse_to_dict(sparse_array) for sparse_array in sparse_arrays]
 
     def _sparse_to_dict(self, sparse_array: Any) -> Dict[int, float]:
+        if sparse_array.ndim == 1:
+            sparse_array = csr_matrix(sparse_array.reshape(1, -1))
         row_indices, col_indices = sparse_array.nonzero()
         non_zero_values = sparse_array.data
         result_dict = {}
