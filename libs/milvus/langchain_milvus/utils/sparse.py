@@ -36,7 +36,8 @@ class BM25SparseEmbedding(BaseSparseEmbedding):
 
         self.analyzer = build_default_analyzer(language=language)
         self.bm25_ef = BM25EmbeddingFunction(self.analyzer, num_workers=1)
-        self.bm25_ef.fit(corpus)
+        if corpus:
+            self.bm25_ef.fit(corpus)
 
     def embed_query(self, text: str) -> Dict[int, float]:
         return self._sparse_to_dict(self.bm25_ef.encode_queries([text]))
